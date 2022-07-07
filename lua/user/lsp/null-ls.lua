@@ -30,6 +30,6 @@ null_ls.setup({
     code_actions.eslint,
     diagnostics.eslint_d,
     formatting.eslint_d,
-    formatting.prettier,
+    formatting.prettierd,
   },
 })

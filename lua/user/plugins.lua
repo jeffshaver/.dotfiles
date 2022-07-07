@@ -101,6 +101,7 @@ return packer.startup(function(use)
   use 'luukvbaal/stabilize.nvim'
   use 'windwp/nvim-spectre'
   use 'bluz71/vim-nightfly-guicolors'
+  use 'RRethy/vim-illuminate'
 
 
   -- Automatically set up your configuration after cloning packer.nvim

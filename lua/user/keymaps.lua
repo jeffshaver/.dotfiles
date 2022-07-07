@@ -32,8 +32,8 @@ vim.g.maplocalleader = " "
 -- keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<C-i>", ":bnext<CR>", opts)
+keymap("n", "<C-o>", ":bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -71,8 +71,10 @@ keymap('n', '<leader>nt', ':NvimTreeToggle<cr>', opts)
 
 keymap('n', '<C-p>', [[<cmd> lua require('telescope.builtin').find_files()<cr>]], opts)
 keymap('n', '<leader>fg', [[<cmd> lua require('telescope.builtin').live_grep()<cr>]], opts)
-keymap('n', '<leader>fb', [[<cmd> lua require('telescope.builtin').buffers()<cr>]], opts)
+keymap('n', '<leader>ff', [[<cmd> lua require('telescope.builtin').find_files({ initial_mode = "normal", search_file = vim.fn.expand('<cword>') } )<cr>]], opts)
+keymap('n', '<leader>fw', [[<cmd> lua require('telescope.builtin').grep_string({ initial_mode = "normal" })<cr>]], opts)
 keymap('n', '<leader>fh', [[<cmd> lua require('telescope.builtin').help_tags()<cr>]], opts)
+keymap('n', '<leader>fs', [[<cmd> lua require('spectre').open()<cr> ]], opts)
 keymap('n', '<C-h>', [[<cmd> lua require('harpoon.ui').toggle_quick_menu()<cr>]], opts)
 keymap('n', '<C-n>', [[<cmd> lua require('harpoon.mark').add_file()<cr>]],opts)
 keymap('n', '<C-j>', [[<cmd> lua require('harpoon.ui').nav_file(1)<cr>]],opts)
@@ -84,4 +86,3 @@ keymap('n', '<leader>gd', ':Gvdiffsplit!<cr>',opts)
 keymap('i', 'kj', '<esc>',opts)
 keymap('n', '<C-a>', 'C-^',opts)
 keymap('n', '<leader>bo', ':BufOnly<cr>', opts)
-
