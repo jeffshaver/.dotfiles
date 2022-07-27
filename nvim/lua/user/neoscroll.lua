@@ -3,4 +3,11 @@ if not status_ok then
   return
 end
 
-require('neoscroll').setup( {easing_function = 'sine' })
+neoscroll.setup( {easing_function = 'sine' })
+
+local t = {}
+
+t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "50" } }
+t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "50" } }
+
+require('neoscroll.config').set_mappings(t)

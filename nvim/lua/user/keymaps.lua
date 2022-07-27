@@ -35,13 +35,19 @@ vim.g.maplocalleader = " "
 keymap("n", "<C-i>", ":bnext<CR>", opts)
 keymap("n", "<C-o>", ":bprevious<CR>", opts)
 
+-- Write buffer
+keymap("n", "<C-s>", ":w<cr>", { noremap = true })
+
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+-- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+-- keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode 
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "kj", "<ESC>", opts)
+
+keymap("i", "<C-k>", "<Up>", opts)
+keymap("i", "<C-j>", "<Down>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -75,6 +81,7 @@ keymap('n', '<leader>ff', [[<cmd> lua require('telescope.builtin').find_files({ 
 keymap('n', '<leader>fw', [[<cmd> lua require('telescope.builtin').grep_string({ initial_mode = "normal" })<cr>]], opts)
 keymap('n', '<leader>fh', [[<cmd> lua require('telescope.builtin').help_tags()<cr>]], opts)
 keymap('n', '<leader>fs', [[<cmd> lua require('spectre').open()<cr> ]], opts)
+keymap('n', '<leader>gs', [[<cmd> lua require('telescope.builtin').git_stash()<cr>]], opts)
 keymap('n', '<C-h>', [[<cmd> lua require('harpoon.ui').toggle_quick_menu()<cr>]], opts)
 keymap('n', '<C-n>', [[<cmd> lua require('harpoon.mark').add_file()<cr>]],opts)
 keymap('n', '<C-j>', [[<cmd> lua require('harpoon.ui').nav_file(1)<cr>]],opts)
@@ -83,6 +90,5 @@ keymap('n', '<C-l>', [[<cmd> lua require('harpoon.ui').nav_file(3)<cr>]],opts)
 keymap('n', '<C-;>', [[<cmd> lua require('harpoon.ui').nav_file(4)<cr>]],opts)
 keymap('n', '<C-J><C-J>', ':w<cr>',opts)
 keymap('n', '<leader>gd', ':Gvdiffsplit!<cr>',opts)
-keymap('i', 'kj', '<esc>',opts)
 keymap('n', '<C-a>', 'C-^',opts)
 keymap('n', '<leader>bo', ':BufOnly<cr>', opts)
