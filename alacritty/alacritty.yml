@@ -1,6 +1,10 @@
 colors:
+  bright:
+    white: "#FFFFFF"
   primary:
     background: "#192330"
+draw_bold_text_with_bright_colors: true
+dynamic_title: true
 env:
   TERM: xterm-256color
 font:
@@ -20,11 +24,14 @@ font:
   italic:
     family: FiraCode Nerd Font # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    # style: Italic
-
+    # style: italic
   # Point size of the font
   size: 14.0
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
 shell:
   program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux"
