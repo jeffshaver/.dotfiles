@@ -7,7 +7,7 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-    file_ignore_patters = {"node_modules", ".git", "local_jars", "dmlCompare"},
+    file_ignore_patterns = {"node_modules", ".git", "local_jars", "dmlCompare"},
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "truncate" },
