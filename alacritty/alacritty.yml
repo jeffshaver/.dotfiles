@@ -35,3 +35,5 @@ shell:
     - -l
     - -c
     - "tmux"
+window:
+  decorations: none
