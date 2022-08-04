@@ -17,6 +17,7 @@ local options = {
   laststatus = 3,
   list = true,
   listchars = 'tab:▸ ,trail:·',
+  mouse = "",
   number = true,
   numberwidth = 4,
   pumheight = 10,
