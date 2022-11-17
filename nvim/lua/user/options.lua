@@ -10,6 +10,10 @@ local options = {
   errorbells = false,
   expandtab = true,
   fileencoding = "utf-8",
+  foldlevelstart = 99,
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  guicursor = "",
   guifont = "Fira Code Nerd Font:h17",
   hidden = true,
   hlsearch = false,
@@ -45,7 +49,12 @@ local options = {
 }
 
 vim.g.mapleader = " "
+vim.g.rustfmt_autosave = 1
 vim.opt.shortmess:append "c"
+
+-- nvim tree
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
 
 for k, v in pairs(options) do
   vim.opt[k] = v

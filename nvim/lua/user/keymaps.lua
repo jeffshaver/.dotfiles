@@ -37,6 +37,7 @@ keymap("n", "<C-o>", ":bprevious<CR>", opts)
 
 -- Write buffer
 keymap("n", "<C-s>", ":w<cr>", { noremap = true })
+keymap("i", "<C-s>", "<C-c>:w<cr>a", { noremap = true })
 
 -- Move text up and down
 -- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -44,10 +45,12 @@ keymap("n", "<C-s>", ":w<cr>", { noremap = true })
 
 -- Insert --
 -- Press jk fast to exit insert mode 
-keymap("i", "kj", "<ESC>", opts)
+keymap("i", "kj", "<C-c>", opts)
 
 keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-j>", "<Down>", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -58,13 +61,16 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
+keymap("n", "<leader>y", "\"+y", opts)
+keymap("v", "<leader>y", "\"+y", opts)
+keymap("n", "<leader>Y", "\"+Y", opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -93,3 +99,7 @@ keymap('n', '<C-J><C-J>', ':w<cr>',opts)
 keymap('n', '<leader>gd', ':Gvdiffsplit!<cr>',opts)
 keymap('n', '<C-a>', 'C-^',opts)
 keymap('n', '<leader>bo', ':BufOnly<cr>', opts)
+keymap('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', opts)
+
+-- NVIM NvimTree
+keymap('n', '<C-t>', ':NvimTreeFindFileToggle<cr>', opts)

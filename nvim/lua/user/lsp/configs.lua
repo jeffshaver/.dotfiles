@@ -5,7 +5,8 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua", "tsserver", }
+-- rust_analyzer is automatically setup by rust-tools.nvim
+local servers = { "gopls", "jsonls", "sumneko_lua", "tsserver", "taplo" }
 
 lsp_installer.setup({
 	ensure_installed = servers,

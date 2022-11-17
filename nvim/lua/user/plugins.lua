@@ -23,7 +23,7 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
@@ -36,6 +36,9 @@ packer.init({
       return require("packer.util").float({ border = "rounded" })
     end,
   },
+  luarocks = {
+    penlight = "pl.pretty"
+  }
 })
 
 -- Install your plugins here
@@ -57,10 +60,10 @@ return packer.startup(function(use)
   use({ "lewis6991/impatient.nvim", })
   use({ "lukas-reineke/indent-blankline.nvim", })
   use({ "goolord/alpha-nvim", })
-  use("folke/which-key.nvim")
+  use({ "folke/which-key.nvim" })
 
   -- Colorschemes
-  use 'EdenEast/nightfox.nvim'
+  use "EdenEast/nightfox.nvim"
 
   -- cmp plugins
   use({ "hrsh7th/nvim-cmp", }) -- The completion plugin
@@ -77,31 +80,35 @@ return packer.startup(function(use)
   -- LSP
   use({ "neovim/nvim-lspconfig", }) -- enable LSP
   use({ "williamboman/nvim-lsp-installer", }) -- simple to use language server installer
-  use({ "jose-elias-alvarez/null-ls.nvim", }) -- for formatters and linters
+  use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+  use({ "simrat39/rust-tools.nvim" })
+  use({ "rust-lang/rust.vim" })
+  use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
 
   -- Telescope
   use({ "nvim-telescope/telescope.nvim", })
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
   -- Treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate"
   })
-  use 'nvim-treesitter/nvim-treesitter-context'
+  use({ "nvim-treesitter/nvim-treesitter-context"})
+  use({ "folke/twilight.nvim" })
 
   -- Git
   use({ "lewis6991/gitsigns.nvim", })
-  use 'tpope/vim-fugitive'
+  use({ "tpope/vim-fugitive" })
 
-  use 'ThePrimeagen/harpoon'
-  use 'vim-scripts/BufOnly.vim'
-  use 'sickill/vim-pasta'
-  use 'karb94/neoscroll.nvim'
-  use 'lewis6991/spellsitter.nvim'
-  use 'luukvbaal/stabilize.nvim'
-  use 'windwp/nvim-spectre'
-  use 'bluz71/vim-nightfly-guicolors'
-  use 'RRethy/vim-illuminate'
+  use({ "ThePrimeagen/harpoon" })
+  use({ "vim-scripts/BufOnly.vim" })
+  use({ "sickill/vim-pasta" })
+  use({ "karb94/neoscroll.nvim" })
+  use({ "luukvbaal/stabilize.nvim" })
+  use({ "windwp/nvim-spectre" })
+  use({ "bluz71/vim-nightfly-guicolors" })
+  use({ "RRethy/vim-illuminate" })
 
 
   -- Automatically set up your configuration after cloning packer.nvim

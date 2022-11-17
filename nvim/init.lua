@@ -4,6 +4,7 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 ]]
+
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
@@ -15,7 +16,7 @@ require "user.treesitter"
 require "user.autopairs"
 require "user.comment"
 require "user.gitsigns"
-require "user.neoscroll"
+--[[require "user.neoscroll" ]]
 require "user.nvim-tree"
 require "user.bufferline"
 require "user.lualine"
@@ -26,3 +27,5 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
+require "user.rust-tools"
+require "user.twilight"
