@@ -122,15 +122,15 @@ return {
           select = false,
         },
         window = {
-          documentation = {
-            border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-          },
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+
         },
         experimental = {
           ghost_text = false,
           native_menu = false,
         },
-      })
+      })j
     end
   },
   'hrsh7th/cmp-buffer', -- buffer completions
