@@ -1,4 +1,4 @@
-local servers = { "gopls", "jdtls", "jsonls", "lua_ls", "tsserver", "taplo", "tailwindcss" }
+local servers = { "bashls", "gopls", "jdtls", "jsonls", "lua_ls", "tsserver", "taplo", "tailwindcss" }
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -21,6 +21,7 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>:Format<CR>", opts)
 end
 
 local signs = {
@@ -99,6 +100,10 @@ return {
 					on_attach = function(client, bufnr)
 						lsp_keymaps(bufnr)
 
+						if server == "tsserver" then
+							client.server_capabilities.documentFormattingProvider = false
+						end
+
 						if client.supports_method("textDocument/inlayHint") then
 							vim.lsp.inlay_hint.enable(bufnr, true)
 						end
@@ -158,22 +163,5 @@ return {
 			vim.g.go_def_mapping_enabled = 0
 		end,
 	},
-
-	{
-		"piersolenski/wtf.nvim",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {},
-		keys = {
-			{
-				"gw",
-				mode = { "n", "x" },
-				function()
-					require("wtf").ai()
-				end,
-				desc = "Debug diagnostic with AI",
-			},
-		},
-	},
+	{ "folke/neodev.nvim" },
 }
