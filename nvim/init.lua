@@ -150,22 +150,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = vim.api.nvim_create_augroup("DisableNewLineComment", { clear = true }),
 })
 
-local client = vim.lsp.start_client({
-  name = "jcc2r-alter-lsp",
-  cmd = { "/home/jshaver/Documents/jcc2-alter-lsp/main" },
-  on_attach = function(_, bufnr)
-    require("_lsp.utils").lsp_keymaps(bufnr)
-  end,
-})
-
-if not client then
-  vim.notify("client failed")
-  return
-else
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "sql",
-    callback = function ()
-      vim.lsp.buf_attach_client(0, client)
-    end
-  })
-end

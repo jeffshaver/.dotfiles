@@ -6,6 +6,7 @@ return {
       require("oil").setup({
         columns = { "icon" },
         keymaps = {
+          ["t"] = false,
           ["<C-p>"] = false,
         },
         view_options = {
@@ -13,7 +14,9 @@ return {
         },
       })
 
-      vim.keymap.set("n", "t", require('oil').toggle_float)
+      vim.keymap.set("n", "<leader>t", function()
+        require("oil").toggle_float(require("oil").get_current_dir())
+      end)
     end,
   },
 }

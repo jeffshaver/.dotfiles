@@ -95,8 +95,8 @@ return {
       end
     end,
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { "williamboman/mason.nvim",           version = "^1.0.0" },
+      { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
     },
