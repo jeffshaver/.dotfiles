@@ -112,10 +112,10 @@ return {
         notify_on_error = false,
         formatters_by_ft = {
           lua = { "stylua" },
-          javascript = { "biome" },
-          javascriptreact = { "biome" },
-          typescript = { "biome" },
-          typescriptreact = { "biome" },
+          javascript = { "biome", "biome-organize-imports" },
+          javascriptreact = { "biome", "biome-organize-imports" },
+          typescript = { "biome", "biome-organize-imports" },
+          typescriptreact = { "biome", "biome-organize-imports" },
         },
       })
 
